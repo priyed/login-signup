@@ -1,39 +1,60 @@
-import React from 'react'
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import { Switch, Route } from "react-router-dom";
 
-const h1 = (
-  <h1>SUBSCRIBE</h1>
-)
+import SignUp from "./components/registerform";
+import FormSwitch from "./components/FormSwitch";
+import Loginform from "./components/loginform";
+import Dashboard from "./components/Dashboard";
 
-const p = (
-  <p>Sign up with your email address to receive news and updates.</p>
-)
+class App extends Component {
+  state = {
+    isLoggedIn: false,
+    firstName: "Asabeneh",
+  };
 
-const form = (
-  <form>
-    <input type="text" name="firstname" placeholder="firstname" />
-    <input type="text" name="lastname" placeholder="lastname" />
-    <input type="email" name="email" placeholder="email" />
-    <button className="submit">Subscribe</button>
-  </form>
-)
+  handleLogin = () => {
+    this.setState({
+      isLoggedIn: !this.state.isLoggedIn,
+    });
+  };
 
-const main = (
-  <div className="main-wrapper">
-    {h1}
-    {p}
-    {form}
-  </div>
-)
-
-
-
-function App() {
-  return (
-   <div>
-     {main}
-   </div>
-  );
+  render() {
+    return (
+      <div className="main-wrapper">
+        <FormSwitch />
+        <Switch>
+          <Route
+            exact
+            path="/signUp"
+            component={(props) => (
+              <SignUp
+                {...props}
+                isLoggedIn={this.state.isLoggedIn}
+                handleLogin={this.handleLogin}
+              />
+            )}
+          />
+          <Route
+            path="/"
+            component={(props) => (
+              <Loginform
+                {...props}
+                isLoggedIn={this.state.isLoggedIn}
+                handleLogin={this.handleLogin}
+              />
+            )}
+          />
+          <Route
+            path="/dashboard"
+            component={(props) => {
+              <Dashboard />;
+            }}
+          />
+        </Switch>
+      </div>
+    );
+  }
 }
 
 export default App;

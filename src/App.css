@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap");
 
 * {
   box-sizing: border-box;
@@ -6,10 +6,11 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   font-family: "Montserrat";
-  
+  background-color: #f3f3f3;
 }
 
 .root {
@@ -17,11 +18,13 @@ html, body {
 }
 .main-wrapper {
   text-align: center;
+  max-width: 400px;
   font-weight: 300;
+  height: 100vh;
   color: black;
-  background-color: #C2E6F4;
+  background-color: #c2e6f4;
   padding: 40px;
-  margin: 40px auto;
+  margin: auto;
   transition: all 0.4s ease-in;
 }
 
@@ -35,6 +38,9 @@ p {
   margin: 30px auto 10px;
 }
 
+.form-container {
+  margin-top: 50px;
+}
 form input {
   margin: 20px 10px 10px;
   padding: 12px;
@@ -44,14 +50,19 @@ form input {
   background: #f1f1f1;
 }
 
+form p {
+  color: orangered;
+  font-weight: 500;
+}
+
 form button {
   display: block;
-  margin: 20px auto;
+  margin: 35px auto;
   padding: 10px 80px;
   border: none;
   outline: none;
   border-radius: 7px;
-  background-color: #F37474;
+  background-color: #f37474;
   font-size: 16px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -61,4 +72,17 @@ form button:active {
   transform: translateY(4px);
   outline: none;
   border: none;
+}
+
+.main-navigation {
+  display: flex;
+  justify-content: space-between;
+  max-width: 80%;
+  margin: auto;
+}
+
+.link {
+  text-decoration: none;
+  font-weight: bold;
+  color: #000;
 }
