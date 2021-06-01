@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import content from "../static/loginField";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const schema = yup.object().shape({
   email: yup.string().required("your firstname is required!!!"),
@@ -36,12 +36,12 @@ function Loginform({ match, isLoggedIn, handleLogin }) {
             </div>
           );
         })}
-        <Link to="/dashbaord">
+        <Link to="/dashboard">
           <button className="submit">Login</button>{" "}
         </Link>
       </form>
       <p>
-        Don't have an account? <Link to="/signup">Sign up</Link>
+        Don't have an account? <Link to="/signUp">Sign up</Link>
       </p>
     </div>
   );

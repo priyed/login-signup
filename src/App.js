@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
 
@@ -7,54 +7,51 @@ import FormSwitch from "./components/FormSwitch";
 import Loginform from "./components/loginform";
 import Dashboard from "./components/Dashboard";
 
-class App extends Component {
-  state = {
-    isLoggedIn: false,
-    firstName: "Asabeneh",
+function App() {
+  const adminUser = {
+    email: "admin@property.com",
+    password: "12345",
   };
 
-  handleLogin = () => {
-    this.setState({
-      isLoggedIn: !this.state.isLoggedIn,
-    });
+  const [user, setUser] = useState({ name: "", email: "" });
+  const [error, setError] = useState("");
+
+  const Login = (details) => {
+    console.log(details);
+
+    if (
+      details.email === adminUser.email &&
+      details.password === adminUser.password
+    ) {
+      console.log("Logged in");
+      setUser({
+        name: details.name,
+        email: details.email,
+      });
+    } else {
+      setError("Details do not match");
+    }
   };
 
-  render() {
-    return (
-      <div className="main-wrapper">
-        <FormSwitch />
-        <Switch>
-          <Route
-            exact
-            path="/signUp"
-            component={(props) => (
-              <SignUp
-                {...props}
-                isLoggedIn={this.state.isLoggedIn}
-                handleLogin={this.handleLogin}
-              />
-            )}
-          />
-          <Route
-            path="/"
-            component={(props) => (
-              <Loginform
-                {...props}
-                isLoggedIn={this.state.isLoggedIn}
-                handleLogin={this.handleLogin}
-              />
-            )}
-          />
-          <Route
-            path="/dashboard"
-            component={(props) => {
-              <Dashboard />;
-            }}
-          />
-        </Switch>
-      </div>
-    );
-  }
+  const Logout = () => {
+    setUser({ name: "", email: "" });
+  };
+
+  return (
+    <div className="main-wrapper">
+      <Switch>
+        <Route exact path="/signUp">
+          <SignUp />
+        </Route>
+        <Route exact path="/dashboard">
+          <Dashboard />
+        </Route>
+        <Route exact path="/">
+          <Loginform />
+        </Route>
+      </Switch>
+    </div>
+  );
 }
 
 export default App;

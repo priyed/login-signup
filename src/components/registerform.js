@@ -37,7 +37,9 @@ const SignUp = () => {
             </div>
           );
         })}
-        <button className="submit">Subscribe</button>
+        <Link to="/dashboard">
+          <button className="submit">Subscribe</button>
+        </Link>
       </form>
       <p>
         Already have an account? <Link to="/">Log in</Link>

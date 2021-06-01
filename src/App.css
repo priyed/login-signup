@@ -55,7 +55,7 @@ form p {
   font-weight: 500;
 }
 
-form button {
+button {
   display: block;
   margin: 35px auto;
   padding: 10px 80px;
